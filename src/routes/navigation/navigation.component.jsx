@@ -20,7 +20,7 @@ const Navigation = () => {
                 </Link>
             </div>
             
-        </div>
+        </div> 
 
         <Outlet />
       </>
