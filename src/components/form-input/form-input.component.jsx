@@ -14,7 +14,9 @@ const FormInput = ({ label, ...otherProps}) => {
                 >
                     {label}
                 </label>
+
             )}
+
         </div>
     )
 }
