@@ -1,5 +1,9 @@
 import { useState } from "react"
-import { createUserDocumentFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase.utils"
+import { 
+    createUserDocumentFromAuth, 
+    signInWithGooglePopup,
+    signInAuthUserWithEmailAndPassword 
+} from "../../utils/firebase/firebase.utils"
 import FormInput from "../form-input/form-input.component"
 import './sign-in-form.styles.scss'
 import Button from "../button/button.component"
@@ -29,14 +33,32 @@ const SignInForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
         
         try {
-            
+            const response = await signInAuthUserWithEmailAndPassword(email, password)
+            console.log("Here is the response >>>>>", response);
             resetFormFields()
 
         } catch (error) {
-            
+            switch(error.code) {
+                case 'auth/network-request-failed':
+                    alert('There is no internet connection')
+                    break
+                case 'auth/cancelled-popup-request':
+                    alert('Please do not cancel popup')
+                    break
+                case 'auth/popup-closed-by-user':
+                    alert('Please do not close popup')
+                    break
+                case 'auth/internal-error':
+                    alert('Internal Error')
+                    break
+                case 'auth/invalid-credential':
+                    alert('No data associated with your credentials. Try again.')
+                    break
+                default:
+                    console.log(error);
+            }
         }
     }
 
@@ -76,6 +98,7 @@ const SignInForm = () => {
                     <Button 
                         onClick={signInWithGoogle} 
                         buttonType='google'
+                        type='button'
                     >
                         Google Sign In
                     </Button>
