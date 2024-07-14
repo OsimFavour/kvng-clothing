@@ -1,12 +1,19 @@
-import './navigation.styles.scss'
-import { Link, Outlet } from "react-router-dom"
-import { ReactComponent as KvngLogo } from '../../assets/crown.svg'
 import { useContext } from 'react'
+import { Link, Outlet } from "react-router-dom"
 import { UserContext } from '../../contexts/user.context'
+import { ReactComponent as KvngLogo } from '../../assets/crown.svg'
+
+import './navigation.styles.scss'
+import { signOutUser } from '../../utils/firebase/firebase.utils'
 
 const Navigation = () => {
-    const { currentUser } = useContext(UserContext)
+    const { currentUser, setCurrentUser } = useContext(UserContext)
     // console.log(currentUser);
+
+    const signOutHandler = async () => {
+        await signOutUser()
+        setCurrentUser(null)
+    }
 
     return (
       <>
@@ -21,7 +28,7 @@ const Navigation = () => {
                 </Link>
 
                 { currentUser ? (
-                    <span className='nav-link'>
+                    <span className='nav-link' onClick={signOutHandler}>
                         SIGN OUT
                     </span>
                 ) : (
