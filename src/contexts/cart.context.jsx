@@ -6,7 +6,7 @@ export const CartContext = createContext({
     cartItems: [],
     addItemsToCart: () => {}
 })
-g
+
 export const CartProvider = ({ children }) => {
     const [isCartOpen, setIsCartOpen] = useState(false)
 
