@@ -11,8 +11,10 @@ import {
 
 import { 
   doc, 
+  query,
   setDoc,
-  getDoc, 
+  getDoc,
+  getDocs, 
   collection,
   writeBatch,
   getFirestore, 
@@ -40,7 +42,9 @@ googleProvider.setCustomParameters({
 export const auth = getAuth()
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 
+
 export const db = getFirestore()
+
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = collection(db, collectionKey)
@@ -54,6 +58,23 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   await batch.commit()
   console.log('done');
 }
+
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories") 
+  const q = query(collectionRef)
+
+  const querySnapshot = await getDocs(q)
+
+  const categoryMap = querySnapshot.docs.reduce(
+    (acc, docSnapshot) => {
+      const { title, items } = docSnapshot.data()
+      acc[title.toLowerCase()] = items
+      return acc
+    }, {})
+    return categoryMap
+}
+
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
 
@@ -84,6 +105,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 
   return userDocRef
 }
+
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
