@@ -1,4 +1,3 @@
-import './sign-up-form.styles.scss'
 import { useState } from "react"
 
 import { 
@@ -8,6 +7,7 @@ import {
 
 import FormInput from "../form-input/form-input.component"
 import Button from "../button/button.component"
+import { SignInContainer } from '../sign-in-form/sign-in-form.styles.jsx'
 
 
 const defaultFormFields = {
@@ -67,7 +67,7 @@ const SignUpForm = () => {
 
 
     return (
-        <div className="sign-up-container">
+        <SignInContainer>
             <h2>Don't have an account?</h2>
             <span>Sign Up with your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -110,7 +110,7 @@ const SignUpForm = () => {
 
                 <Button type="submit">Sign Up</Button>                
             </form>
-        </div>
+        </SignInContainer>
     )
 }
 
