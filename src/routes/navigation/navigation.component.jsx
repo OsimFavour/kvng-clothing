@@ -10,7 +10,6 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 import { ReactComponent as KvngLogo } from '../../assets/crown.svg'
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 
-import './navigation.styles.jsx'
 import { LogoContainer, NavigationContainer, NavLinks } from './navigation.styles.jsx'
 
 const Navigation = () => {
