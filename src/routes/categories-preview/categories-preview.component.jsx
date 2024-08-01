@@ -11,7 +11,7 @@ const CategoriesPreview = () => {
     console.log('Categories Map', categoriesMap);
 
     return (
-        <div className='shop-container'>
+        <Fragment>
             {Object.keys(categoriesMap).map((title) => {
                 const products = categoriesMap[title]
 
@@ -19,7 +19,7 @@ const CategoriesPreview = () => {
                     <CategoryPreview key={title} title={title} products={products}/>   
                 )
             })}
-        </div>
+        </Fragment>
     )
 }
 
