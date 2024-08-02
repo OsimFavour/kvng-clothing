@@ -8,7 +8,7 @@ const CategoriesPreview = () => {
 
     const { categoriesMap } = useContext(CategoriesContext)
 
-    console.log('Categories Map', categoriesMap);
+    console.log('Categories Map>>>>', categoriesMap);
 
     return (
         <Fragment>
