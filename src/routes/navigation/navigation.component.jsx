@@ -1,4 +1,5 @@
 import { Fragment, useContext } from 'react'
+
 import { Outlet } from "react-router-dom"
 
 import { UserContext } from '../../contexts/user.context'
@@ -8,34 +9,38 @@ import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component'
 
 import { ReactComponent as KvngLogo } from '../../assets/crown.svg'
+
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 
-import { LogoContainer, NavigationContainer, Navlink, NavLinks } from './navigation.styles.jsx'
+import { LogoContainer, NavigationContainer, NavLink, NavLinks } from './navigation.styles'
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext)
     const { isCartOpen } = useContext(CartContext)
 
     return (
+
       <Fragment>
+
         <NavigationContainer>
             <LogoContainer to='/'>
                 <KvngLogo className="logo" />
             </LogoContainer>
             
             <NavLinks>
-                <Navlink to='/shop'>
+
+                <NavLink to='/shop'>
                     SHOP
-                </Navlink>
+                </NavLink>
 
                 { currentUser ? (
-                    <Navlink as="span" onClick={signOutUser}>
+                    <NavLink as='span' onClick={signOutUser}>
                         SIGN OUT
-                    </Navlink>
+                    </NavLink>
                 ) : (
-                    <Navlink to='/auth'>
+                    <NavLink to='/auth'>
                         SIGN IN
-                    </Navlink>
+                    </NavLink>
                 )}
 
                 <CartIcon/>

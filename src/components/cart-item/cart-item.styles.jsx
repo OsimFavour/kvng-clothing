@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const CartItemContainer = styled.div`
   width: 100%;
@@ -19,9 +19,9 @@ export const ItemDetails = styled.div`
   justify-content: center;
   padding: 10px 20px;
 
-  .span {
+
+  span {
     font-size: 16px;
   }
 `
-
   

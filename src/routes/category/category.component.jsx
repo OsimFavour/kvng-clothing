@@ -7,6 +7,7 @@ import ProductCard from '../../components/product-card/product-card.component'
 import { CategoryContainer, Title } from './category.styles'
 
 
+
 const Category = () => {
     const { category } = useParams()
     const { categoriesMap } = useContext(CategoriesContext)

@@ -5,9 +5,8 @@ export const BackgroundImage = styled.div`
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-image: ${({ imageurl }) => `url(${imageurl})`}
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `
-
 
 export const Body = styled.div`
   height: 90px;
@@ -35,7 +34,6 @@ export const Body = styled.div`
   }
 `
 
-
 export const DirectoryItemContainer = styled.div`
   min-width: 30%;
   height: 240px;
@@ -46,6 +44,10 @@ export const DirectoryItemContainer = styled.div`
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
+
+  &.large {
+      height: 380px;
+    }
 
   &:first-child {
     margin-right: 7.5px;

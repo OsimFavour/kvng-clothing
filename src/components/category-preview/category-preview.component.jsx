@@ -1,10 +1,12 @@
 import ProductCard from "../product-card/product-card.component"
+import { CategoryPreviewContainer, Preview, Title } from "./category-preview.styles";
+
 
 import { CartegoryPreviewContainer, Preview, Title } from "./category-preview.styles.jsx";
 
 const CategoryPreview = ({ title, products }) => {
     return (
-        <CartegoryPreviewContainer>
+        <CategoryPreviewContainer>
             <h2>
                 <Title to={title}>{title.toUpperCase()}</Title>
             </h2>
@@ -12,7 +14,7 @@ const CategoryPreview = ({ title, products }) => {
                 {products.filter((_, idx) => idx < 4)
                 .map((product) => <ProductCard key={product.id} product={product}/>)}
             </Preview>
-        </CartegoryPreviewContainer>
+        </CategoryPreviewContainer>
     )
 }
 
