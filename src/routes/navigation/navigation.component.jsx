@@ -46,7 +46,7 @@ const Navigation = () => {
             
         </NavigationContainer> 
 
-        <Outlet />
+        {/* <Outlet /> */}
       </Fragment>
     )
 }
