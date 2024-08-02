@@ -2,8 +2,6 @@ import ProductCard from "../product-card/product-card.component"
 import { CategoryPreviewContainer, Preview, Title } from "./category-preview.styles";
 
 
-import { CartegoryPreviewContainer, Preview, Title } from "./category-preview.styles.jsx";
-
 const CategoryPreview = ({ title, products }) => {
     return (
         <CategoryPreviewContainer>

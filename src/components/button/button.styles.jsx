@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const BaseButton = styled.div`
   min-width: 165px;
   width: auto;
