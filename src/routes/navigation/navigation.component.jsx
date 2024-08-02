@@ -33,7 +33,7 @@ const Navigation = () => {
                         SIGN OUT
                     </NavLink>
                 ) : (
-                    <NavLink className="nav-link" to='/auth'>
+                    <NavLink to='/auth'>
                         SIGN IN
                     </NavLink>
                 )}
