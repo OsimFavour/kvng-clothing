@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react'
-import { NavLink, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
 import { UserContext } from '../../contexts/user.context'
 import { CartContext } from '../../contexts/cart.context'
@@ -10,7 +10,7 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 import { ReactComponent as KvngLogo } from '../../assets/crown.svg'
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 
-import { LogoContainer, NavigationContainer, NavLinks } from './navigation.styles.jsx'
+import { LogoContainer, NavigationContainer, Navlink, NavLinks } from './navigation.styles.jsx'
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext)
@@ -24,18 +24,18 @@ const Navigation = () => {
             </LogoContainer>
             
             <NavLinks>
-                <NavLink to='/shop'>
+                <Navlink to='/shop'>
                     SHOP
-                </NavLink>
+                </Navlink>
 
                 { currentUser ? (
-                    <NavLink as="span" onClick={signOutUser}>
+                    <Navlink as="span" onClick={signOutUser}>
                         SIGN OUT
-                    </NavLink>
+                    </Navlink>
                 ) : (
-                    <NavLink to='/auth'>
+                    <Navlink to='/auth'>
                         SIGN IN
-                    </NavLink>
+                    </Navlink>
                 )}
 
                 <CartIcon/>
@@ -46,7 +46,7 @@ const Navigation = () => {
             
         </NavigationContainer> 
 
-        {/* <Outlet /> */}
+        <Outlet />
       </Fragment>
     )
 }
