@@ -9,8 +9,6 @@ const CategoriesPreview = () => {
     const { isLoading, isError, categoriesMap } = useContext(CategoriesContext)
 
 
-    console.log('Categories Map>>>>', categoriesMap);
-
     if (!categoriesMap || Object.keys(categoriesMap).length === 0) {
         return <Fragment>No internet connection. Please turn on your data..</Fragment> 
     }

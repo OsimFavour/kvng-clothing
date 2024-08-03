@@ -27,6 +27,7 @@ const Category = () => {
     if (!categoriesMap[category] || !categoriesMap[category].length) {
         return <Fragment>Please turn on internet connection.</Fragment>
     }
+    
     return (
         <Fragment>
             <Title>{category.toUpperCase()}</Title>

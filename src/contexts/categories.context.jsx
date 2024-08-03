@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils.js";
 import { useQuery } from "react-query";
 
@@ -11,23 +11,6 @@ export const CategoriesContext = createContext({
 
 
 export const CategoriesProvider = ({ children }) => {
-    // const [categoriesMap, setCategoriesMap] = useState({})
-    
-    // useEffect(() => {
-    //     const getCategoriesMap = async () => {
-    //         const categoryMap = await getCategoriesAndDocuments()
-    //         setCategoriesMap(categoryMap);
-    //     }
-
-    //     return getCategoriesMap
-    // }, [])
-
-    // const getCategoriesMap = async () => {
-    //     const categoryMap = await getCategoriesAndDocuments()
-
-    //     console.log('Hi from category context', categoryMap);
-    //     return categoryMap
-    // }
 
     const { isLoading, isError, data: categoriesMap } = useQuery(
         'category', 
