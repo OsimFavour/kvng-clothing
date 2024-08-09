@@ -35,8 +35,9 @@ const SignInForm = () => {
         event.preventDefault()
         
         try {
-            await signInAuthUserWithEmailAndPassword(email, password)
-    
+            const response = await signInAuthUserWithEmailAndPassword(email, password)
+            console.log('Response that is not working >>>', response);
+            
             resetFormFields()
 
         } catch (error) {
