@@ -41,14 +41,17 @@ const SignInForm = () => {
 
         } catch (error) {
             switch(error.code) {
+                case 'auth/popup-closed-by-user':
+                    alert('Please do not close popup')
+                    break
                 case 'auth/network-request-failed':
                     alert('There is no internet connection')
                     break
+                case 'auth/popup-blocked':
+                    alert('No internet connection')
+                    break
                 case 'auth/cancelled-popup-request':
                     alert('Please do not cancel popup')
-                    break
-                case 'auth/popup-closed-by-user':
-                    alert('Please do not close popup')
                     break
                 case 'auth/internal-error':
                     alert('Internal Error')
