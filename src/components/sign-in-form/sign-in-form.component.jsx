@@ -27,19 +27,9 @@ const SignInForm = () => {
     }
 
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        console.log(user);
-    }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password)
-            console.log('Response that is not working >>>', response);
-            
-            resetFormFields()
-
+            const { user } = await signInWithGooglePopup();
+            console.log(user); 
         } catch (error) {
             switch(error.code) {
                 case 'auth/popup-closed-by-user':
@@ -63,6 +53,21 @@ const SignInForm = () => {
                 default:
                     console.log(error);
             }
+        }
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        
+        try {
+            const response = await signInAuthUserWithEmailAndPassword(email, password)
+            console.log('Response that is not working >>>', response);
+            
+            resetFormFields()
+
+        } catch (error) {
+            console.log('User sign in failed', error);
+            
         }
     }
 

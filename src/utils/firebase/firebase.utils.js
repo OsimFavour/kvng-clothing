@@ -116,11 +116,17 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
-
-  if (!email || !password) return;
-  const response =  await signInWithEmailAndPassword(auth, email, password);
-  console.log(response);
-  return response;
+  try {
+    if (!email || !password) return;
+    const response =  await signInWithEmailAndPassword(auth, email, password);
+    console.log(response);
+    return response;
+    
+  } catch (error) {
+    console.log('Error from firebase', error);
+    
+  }
+  
   
 }
 
