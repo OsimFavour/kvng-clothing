@@ -66,13 +66,7 @@ export const getCategoriesAndDocuments = async () => {
 
   const querySnapshot = await getDocs(q)
 
-  const categoryMap = querySnapshot.docs.reduce(
-    (acc, docSnapshot) => {
-      const { title, items } = docSnapshot.data()
-      acc[title.toLowerCase()] = items
-      return acc
-    }, {})
-    return categoryMap
+  return querySnapshot.docs.map(docSnapshot => docSnapshot.data())
 }
 
 
@@ -116,11 +110,17 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
-
-  if (!email || !password) return;
-  const response =  await signInWithEmailAndPassword(auth, email, password);
-  console.log(response);
-  return response;
+  try {
+    if (!email || !password) return;
+    const response =  await signInWithEmailAndPassword(auth, email, password);
+    console.log(response);
+    return response;
+    
+  } catch (error) {
+    console.log('Error from firebase', error);
+    
+  }
+  
   
 }
 
