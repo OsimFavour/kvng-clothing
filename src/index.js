@@ -3,7 +3,6 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'
-import { CartProvider } from './contexts/cart.context';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux'
 import { store } from './store/store';
@@ -16,9 +15,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
-          <CartProvider>
             <App />
-          </CartProvider>
         </QueryClientProvider>
       </BrowserRouter>
     </Provider>
