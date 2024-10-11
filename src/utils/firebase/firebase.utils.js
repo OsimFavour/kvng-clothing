@@ -75,10 +75,10 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   if (!userAuth) return;
   const userDocRef = doc(db, 'users', userAuth.uid)
 
-  console.log(userDocRef);
+  console.log('User DocRef >>>', userDocRef);
 
   const userSnapshot = await getDoc(userDocRef)
-  console.log(userSnapshot);
+  console.log('User Snapshot >>>', userSnapshot);
   console.log(userSnapshot.exists());
 
   if (!userSnapshot.exists()) {
@@ -97,7 +97,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     }
   }
 
-  return userDocRef
+  return userSnapshot
 }
 
 
@@ -129,3 +129,17 @@ export const signOutUser = async () => await signOut(auth);
 
 
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
+
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth, 
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    )
+  })
+}
