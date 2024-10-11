@@ -7,11 +7,8 @@ import { fetchCategoriesFailed, fetchCategoriesSuccess } from "./category.action
 export function* fetchCategoriesAsync() {
     try {
         const categoriesArray = yield call(getCategoriesAndDocuments, "categories")
-        console.log('Categories Array', categoriesArray);
         
-        console.log('Before response');
-        const response = yield put(fetchCategoriesSuccess(categoriesArray))
-        console.log('Response', response);
+        yield put(fetchCategoriesSuccess(categoriesArray))
         
     } catch(error) {
         yield put(fetchCategoriesFailed(error))
