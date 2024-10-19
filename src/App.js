@@ -8,7 +8,7 @@ import Authentication from './routes/authentication/authentication.component';
 import Shop from './routes/shop/shop.component';
 import Checkout from './routes/checkout/checkout.component';
 
-import { onCheckUserSession } from './store/user/user.saga';
+import { checkUserSession } from './store/user/user.action';
 
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(onCheckUserSession())
+    dispatch(checkUserSession())
   }, [])
 
   return (
