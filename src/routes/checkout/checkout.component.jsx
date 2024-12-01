@@ -10,11 +10,12 @@ import {
     HeaderBlock, 
     Total 
 } from './checkout.styles';
+import { memo } from 'react';
 
 
 
 
-const Checkout = () => {
+const Checkout = memo(() => {
 
     const cartTotal = useSelector(selectCartTotal)
     const cartItems = useSelector(selectCartItems)
@@ -41,6 +42,6 @@ const Checkout = () => {
 
         
     )
-}
+})
 
 export default Checkout
