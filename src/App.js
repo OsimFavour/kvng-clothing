@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { Routes, Route } from 'react-router-dom'
 
-import { setCurrentUser } from './store/user/user.action';
-
-import { createUserDocumentFromAuth, onAuthStateChangedListener } from './utils/firebase/firebase.utils';
+import { checkUserSession } from './store/user/user.action';
 import Spinner from './components/spinner/spinner.component';
 
 const Home = lazy(() => import('./routes/home/home.component'));
@@ -20,17 +18,7 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-
-        if (user) {
-            createUserDocumentFromAuth(user)
-        }
-
-        dispatch(setCurrentUser(user))
-        console.log('Unsubscribe>>>>>', user);
-      })
-
-      return unsubscribe
+    dispatch(checkUserSession())
   }, [])
 
   return (
